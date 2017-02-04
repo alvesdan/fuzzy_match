@@ -1,5 +1,15 @@
 defmodule FuzzyMatch.CLI do
-  def main(args \\ []) do
+  def main([]) do
+    IO.puts """
+    Usage: fuzzy_match [--limit] PATTERN [FOLDER]
+
+    The following options are available:
+
+    --limit     Limit the number of results to display
+    """
+  end
+
+  def main(args) do
     {opts, pattern, folder} = args |> parse_args
     process(pattern, folder, opts)
   end
