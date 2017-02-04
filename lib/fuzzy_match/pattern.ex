@@ -1,9 +1,8 @@
 defmodule FuzzyMatch.Pattern do
-  def match?(pattern, file) when is_binary(pattern) do
-    pattern_list = String.codepoints(pattern)
-    file_list = String.codepoints(file)
-    match?(pattern_list, file_list, 0, 0)
-  end
+  import String, only: [codepoints: 1, downcase: 1]
+
+  def match?(pattern, file) when is_binary(pattern),
+    do: match?(codepoints(pattern), codepoints(file), 0, 0)
   
   def match?([], _file, points, _current_match), do: points
   def match?(_pattern, [], points, _current_match), do: points
@@ -36,6 +35,6 @@ defmodule FuzzyMatch.Pattern do
   end
   
   defp same_chars?(left, right) do
-    String.downcase(left) == String.downcase(right)
+    downcase(left) == downcase(right)
   end
 end
