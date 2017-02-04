@@ -17,4 +17,3 @@ erl_crash.dump
 *.ez
 
 .DS_store
-fuzzy_match

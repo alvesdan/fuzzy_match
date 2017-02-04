@@ -1,23 +1,23 @@
-defmodule FuzzyMatch.File do
-  def match_pattern?(pattern, file) when is_binary(pattern) do
+defmodule FuzzyMatch.Pattern do
+  def match?(pattern, file) when is_binary(pattern) do
     pattern_list = String.codepoints(pattern)
     file_list = String.codepoints(file)
-    match_pattern?(pattern_list, file_list, 0, 0)
+    match?(pattern_list, file_list, 0, 0)
   end
   
-  def match_pattern?([], _file, points, _current_match), do: points
-  def match_pattern?(_pattern, [], points, _current_match), do: points
-  def match_pattern?(pattern, file, points, current_match) do
+  def match?([], _file, points, _current_match), do: points
+  def match?(_pattern, [], points, _current_match), do: points
+  def match?(pattern, file, points, current_match) do
     [pattern_char|pattern_tail] = pattern
     [file_char|file_tail] = file
 
     sum_points = points_for(pattern_char, file_char, current_match)
 
     if sum_points > 0 do
-      match_pattern?(pattern_tail, file_tail,
+      match?(pattern_tail, file_tail,
         points + sum_points, current_match + 1)
     else
-      match_pattern?(pattern, file_tail, points, current_match)
+      match?(pattern, file_tail, points, current_match)
     end
   end
   

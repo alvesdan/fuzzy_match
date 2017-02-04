@@ -2,7 +2,7 @@ defmodule FuzzyMatch.Iterator do
   defstruct [ files: %{} ]
   
   def find_match(iterator, pattern, file) do
-    points = FuzzyMatch.File.match_pattern?(pattern, file)
+    points = FuzzyMatch.Pattern.match?(pattern, file)
     add_file(iterator, file, points)
   end
   
