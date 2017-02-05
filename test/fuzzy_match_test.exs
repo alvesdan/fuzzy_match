@@ -32,4 +32,9 @@ defmodule FuzzyMatchTest do
     match = FuzzyMatch.find("fuzzy_match", @complex_files)
     assert List.first(match) == "apps/workflows/fuzzy_match/job.properties"
   end
+
+  test "it excludes from result using regex pattern" do
+    files = ["folder/example", "folder/file"]
+    assert FuzzyMatch.exclude(files, ["example\\z"]) == ["folder/file"]
+  end
 end
