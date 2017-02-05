@@ -33,6 +33,7 @@ I will try to add new features and improve the fuzzy match algorithm slowly. Con
   The following options are available:
 
   --limit     Limit the number of results to display
+  --exclude   Exclude from results using regex
   ```
 
 ## Contributing
