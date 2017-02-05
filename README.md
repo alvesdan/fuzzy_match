@@ -41,6 +41,6 @@ Bug reports and pull requests are welcome on GitHub.
 
 ## Todo
 
-  - [ ] Exclude folders from search
-  - [ ] Exclude files from search
+  - [x] Exclude folders from search
+  - [x] Exclude files from search
   - [ ] Improve fuzzy match algorithm
